@@ -82,7 +82,7 @@ const elementos = [
 console.log(NOMBRE_APP);
 console.table(elementos);
 
-function listarTodos(lista) {
+function listar(lista) {
   for (const elemento of lista) {
     const etiqueta = elemento.camposPendientes <= LIMITE_PENDIENTES
       ? "Casi completa"
@@ -202,11 +202,12 @@ function calcularEstadisticas(lista) {
   console.log("Máximo:", maximo.nombre, maximo.camposPendientes);
 }
 
-listarTodos(elementos);
+listar(elementos);
 filtrarPorCategoriaYLimite(elementos, CATEGORIA_PRUEBA, LIMITE_PENDIENTES);
 filtrarPorCategoriaYLimite(elementos, CATEGORIA_PRUEBA, LIMITE_PRUEBA);
 contarPorCategoria(elementos);
 console.table(buscarPorTexto(elementos, TEXTO_BUSQUEDA));
+console.table(buscarPorTexto(elementos, "LIDL"));
 
 const idNuevo = anadir(elementos, {
   nombre: "Comercio de prueba",
@@ -218,4 +219,8 @@ const idNuevo = anadir(elementos, {
 });
 console.log("Id añadido:", idNuevo);
 console.log("Eliminado:", eliminarPorId(elementos, idNuevo));
+console.log("Id inexistente:", eliminarPorId(elementos, -1));
 calcularEstadisticas(elementos);
+calcularEstadisticas([]);
+
+

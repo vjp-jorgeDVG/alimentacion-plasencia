@@ -2,36 +2,37 @@
 
 **Autor:** Jorge De Vicente Gómez  
 **Modalidad:** trabajo individual  
-**Nombre del repositorio:** `alimentacion-plasencia`
+**Nombre del proyecto y del repositorio:** `alimentacion-plasencia`
 
-## Qué hace
+## Qué hace la aplicación
 
-El proyecto muestra ocho comercios de alimentación de Plasencia desde la consola del navegador. Sirve para practicar los ejercicios de las sesiones 6 y 7 y del Sprint 0.
+La aplicación muestra y gestiona ocho comercios de alimentación de Plasencia desde la consola del navegador. Permite listar, filtrar y contar comercios, buscar por nombre, añadir y eliminar elementos y calcular estadísticas.
 
-## Alcance del Sprint 0
+## Datos de cada comercio
 
-La aplicación trabaja con la lógica en consola: muestra, lista, busca, filtra, cuenta categorías, añade, elimina y calcula estadísticas. No incluye interfaz gráfica ni funciones opcionales.
+Cada elemento tiene un `id` numérico y estos seis campos:
 
-## Datos
+| Campo | Tipo | Descripción |
+|---|---|---|
+| `nombre` | Texto (`string`) | Nombre del comercio |
+| `categoria` | Texto (`string`) | Tipo de establecimiento |
+| `direccion` | Texto (`string`) | Dirección en Plasencia |
+| `fechaDeRevision` | Fecha escrita como texto (`string`, formato `AAAA-MM-DD`) | Día de revisión del dato |
+| `camposPendientes` | Número (`number`) | Cuántos datos de contacto faltan: teléfono, web o coordenada exacta |
+| `fuente` | Texto (`string`) | Enlace de referencia usado para revisar el comercio |
 
-Cada comercio tiene un `id` y estos campos: `nombre`, `categoria`, `direccion`, `fechaDeRevision`, `camposPendientes` y `fuente`. `camposPendientes` cuenta si faltan teléfono, página web o coordenada exacta; es un dato calculado para el ejercicio, no una característica comercial.
+Los comercios se basan en datos reales con fuentes enlazadas. `camposPendientes` es un recuento preparado para el ejercicio; no es un dato comercial.
+
+## Qué se ha hecho en el Sprint 0
+
+Se preparó un array de ocho elementos y se implementaron los listados, el filtro con condición compuesta, el recuento por categoría con `switch`, la búsqueda por texto, el alta con el siguiente identificador, la eliminación por identificador y las estadísticas de total, media y máximo. La función de estadísticas avisa si la lista está vacía. La aplicación funciona en la consola; no incluye interfaz gráfica ni estilos, que no se piden en este sprint.
 
 ## Cómo ejecutar
 
 1. Abre `index.html` en un navegador.
 2. Abre las herramientas del navegador con F12.
-3. Selecciona la pestaña **Consola** para ver los resultados.
-
-## Funciones incluidas
-
-El programa lista y filtra los comercios, cuenta las categorías, busca por nombre, añade y elimina por identificador y calcula el total, la media y el máximo de campos pendientes. Si la lista está vacía, muestra un mensaje.
-
-## Estructura del proyecto
-
-- `index.html`: página que carga el programa.
-- `js/app.js`: datos y funciones JavaScript.
-- `README.md`: descripción e instrucciones.
+3. Entra en **Consola** para ver la tabla y los resultados.
 
 ## Uso de inteligencia artificial
 
-Se ha usado ChatGPT como apoyo para organizar los datos y preparar un primer borrador del código. El autor ha revisado el proyecto y debe poder explicar cada función durante la exposición.
+Se usó ChatGPT como apoyo para organizar los datos, preparar un primer borrador del código y revisar su correspondencia con los requisitos. Jorge De Vicente Gómez revisó el resultado y debe poder explicar las funciones durante la exposición.
