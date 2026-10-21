@@ -33,6 +33,14 @@ Se preparó un array de ocho elementos y se implementaron los listados, el filtr
 2. Abre las herramientas del navegador con F12.
 3. Entra en **Consola** para ver la tabla y los resultados.
 
+## Organización de las fichas
+
+- Los ejercicios de la sesión 6 están en la carpeta local `retos-s6`, fuera de este repositorio.
+- Los retos 1 y 2 de la sesión 7 se trabajan en `js/app.js`.
+- El reto 3 de la sesión 7 está en la carpeta local `retos-s7`, fuera de este repositorio.
+
+Las carpetas `retos-s6` y `retos-s7` se conservan junto al proyecto en el Escritorio, según las fichas de clase.
+
 ## Uso de inteligencia artificial
 
 Se usó ChatGPT como apoyo para organizar los datos, preparar un primer borrador del código y revisar su correspondencia con los requisitos. Jorge De Vicente Gómez revisó el resultado y debe poder explicar las funciones durante la exposición.
