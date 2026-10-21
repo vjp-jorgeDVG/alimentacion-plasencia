@@ -1,9 +1,11 @@
+// Valores que cambio para probar el programa.
 const NOMBRE_APP = "Alimentación de Plasencia";
 const LIMITE_PENDIENTES = 1;
 const LIMITE_PRUEBA = 2;
 const CATEGORIA_PRUEBA = "Supermercado";
 const TEXTO_BUSQUEDA = "lidl";
 
+// Aquí tengo los comercios y sus datos.
 const elementos = [
   {
     id: 1,
@@ -79,11 +81,14 @@ const elementos = [
   }
 ];
 
+// Al abrir la página, enseño el nombre y la tabla.
 console.log(NOMBRE_APP);
 console.table(elementos);
 
+// Recorro la lista y digo cómo está cada comercio.
 function listar(lista) {
   for (const elemento of lista) {
+    // Si no supera el límite, la marco casi completa.
     const etiqueta = elemento.camposPendientes <= LIMITE_PENDIENTES
       ? "Casi completa"
       : "Por completar";
@@ -92,12 +97,15 @@ function listar(lista) {
   }
 }
 
+// Filtro por categoría y por número de campos pendientes.
 function filtrarPorCategoriaYLimite(lista, categoria, limite) {
+  // Empiezo el recuento en cero.
   let encontrados = 0;
 
   for (let i = 0; i < lista.length; i++) {
     const elemento = lista[i];
 
+    // Tienen que cumplirse las dos condiciones.
     if (elemento.categoria === categoria && elemento.camposPendientes <= limite) {
       console.log(elemento.nombre);
       encontrados++;
@@ -105,9 +113,11 @@ function filtrarPorCategoriaYLimite(lista, categoria, limite) {
   }
 
   console.log(`Encontrados: ${encontrados}`);
+  // Muestro y devuelvo cuántos he encontrado.
   return encontrados;
 }
 
+// Cuento cuántos comercios hay de cada categoría.
 function contarPorCategoria(lista) {
   let supermercados = 0;
   let fruterias = 0;
@@ -142,11 +152,15 @@ function contarPorCategoria(lista) {
   console.log("Oleoteca:", oleotecas);
 }
 
+// Busco el texto en los nombres y devuelvo las coincidencias.
 function buscarPorTexto(lista, texto) {
+  // Guardo aquí los resultados, sin tocar la lista original.
   const resultados = [];
+  // Así da igual escribirlo en mayúsculas o minúsculas.
   const textoBuscado = texto.toLowerCase();
 
   for (const elemento of lista) {
+    // Si el nombre contiene el texto, añado ese comercio.
     if (elemento.nombre.toLowerCase().includes(textoBuscado)) {
       resultados.push(elemento);
     }
@@ -155,7 +169,9 @@ function buscarPorTexto(lista, texto) {
   return resultados;
 }
 
+// Añado un comercio nuevo y devuelvo su id.
 function anadir(lista, nuevoElemento) {
+  // Busco primero el id más alto.
   let idMayor = 0;
 
   for (const elemento of lista) {
@@ -164,51 +180,64 @@ function anadir(lista, nuevoElemento) {
     }
   }
 
+  // Uso el siguiente id para no repetir ninguno.
   nuevoElemento.id = idMayor + 1;
   lista.push(nuevoElemento);
   return nuevoElemento.id;
 }
 
+// Borro el comercio que tenga este id.
 function eliminarPorId(lista, idBuscado) {
   for (let i = 0; i < lista.length; i++) {
     if (lista[i].id === idBuscado) {
+      // Lo encuentro, lo borro y aviso de que sí estaba.
       lista.splice(i, 1);
       return true;
     }
   }
 
+  // Si llego aquí, ese id no existe.
   return false;
 }
 
+// Calculo el total, la media y el comercio con más pendientes.
 function calcularEstadisticas(lista) {
+  // Si está vacía, aviso y no intento calcular la media.
   if (lista.length === 0) {
     console.log("No hay datos");
     return;
   }
 
+  // Empiezo la suma en cero y tomo el primer comercio como máximo inicial.
   let total = 0;
   let maximo = lista[0];
 
   for (const elemento of lista) {
     total += elemento.camposPendientes;
 
+    // Si encuentro más pendientes, actualizo el máximo.
     if (elemento.camposPendientes > maximo.camposPendientes) {
       maximo = elemento;
     }
   }
 
   console.log("Total:", total);
+  // Muestro la media con un decimal.
   console.log("Media:", (total / lista.length).toFixed(1));
   console.log("Máximo:", maximo.nombre, maximo.camposPendientes);
 }
 
+// Pruebo las funciones al abrir la página.
 listar(elementos);
+// Pruebo el filtro con los dos límites.
 filtrarPorCategoriaYLimite(elementos, CATEGORIA_PRUEBA, LIMITE_PENDIENTES);
 filtrarPorCategoriaYLimite(elementos, CATEGORIA_PRUEBA, LIMITE_PRUEBA);
 contarPorCategoria(elementos);
+// Pruebo la búsqueda en minúsculas y en mayúsculas.
 console.table(buscarPorTexto(elementos, TEXTO_BUSQUEDA));
 console.table(buscarPorTexto(elementos, "LIDL"));
 
+// Añado uno de prueba y luego lo borro.
 const idNuevo = anadir(elementos, {
   nombre: "Comercio de prueba",
   categoria: "Supermercado",
